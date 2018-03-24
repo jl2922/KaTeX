@@ -128,7 +128,7 @@ defineFunction({
         numArgs: 2,
         allowedInText: true,
         greediness: 3,
-        argTypes: ["color", "text"],
+        argTypes: ["color", "math"],
     },
     handler(context, args, optArgs) {
         const color = args[0];

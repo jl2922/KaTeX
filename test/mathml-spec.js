@@ -68,7 +68,7 @@ describe("A MathML builder", function() {
         expect(getMathML("\\raisebox{0.25em}{b}")).toMatchSnapshot();
     });
 
-    it('should use <menclose> for colorbox', () => {
+    it.skip('should use <menclose> for colorbox', () => {
         expect(getMathML("\\colorbox{red}{b}")).toMatchSnapshot();
     });
 
