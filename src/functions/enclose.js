@@ -33,7 +33,7 @@ const htmlBuilder = (group, options) => {
         // ref: LaTeX source2e: \fboxsep = 3pt;  \fboxrule = .4pt
         // ref: cancel package: \advance\totalheight2\p@ % "+2"
         if (/box/.test(label)) {
-            vertPad = label === "colorbox" ? 0.3 : 0.34;
+            vertPad = label === "colorbox" ? 0.1 : 0.34;
         } else {
             vertPad = utils.isCharacterBox(group.value.body) ? 0.2 : 0;
         }
