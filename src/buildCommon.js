@@ -599,7 +599,10 @@ const makeGlue = (measurement: Measurement, options: Options): domTree.span => {
     // Make an empty span for the rule
     const rule = makeSpan(["mord", "rule"], [], options);
     const size = calculateSize(measurement, options);
-    rule.style.marginRight = `${size}em`;
+    rule.style.height = `${size * 3}em`;
+    rule.style.paddingRight = `${size}em`;
+    rule.style.cursor = 'text';
+    rule.style.pointerEvents = 'auto';
     return rule;
 };
 

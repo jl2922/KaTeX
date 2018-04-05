@@ -79,6 +79,7 @@ const renderToDomTree = function(
 ) {
     const settings = new Settings(options);
     const tree = parseTree(expression, settings);
+    console.log(tree);
     return buildTree(tree, expression, settings);
 };
 

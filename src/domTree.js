@@ -466,7 +466,7 @@ class symbolNode implements CombinableDomNode {
 
         if (this.italic > 0) {
             span = document.createElement("span");
-            span.style.marginRight = this.italic + "em";
+            span.style.paddingRight = this.italic + "em";
         }
 
         if (this.classes.length > 0) {
@@ -483,6 +483,24 @@ class symbolNode implements CombinableDomNode {
         }
 
         if (span) {
+            console.log(span);
+            span.style.cursor = 'text';
+            span.style.pointerEvents = 'auto';
+            span.style.position = 'relative';
+            span.style.zIndex = '1000';
+            span.addEventListener('mousedown', (event) => {
+                console.log(event);
+                alert('symbolNode');
+                const offsetX = event.offsetX;
+                const offsetLeft = event.target.offsetLeft;
+                const offsetWidth = event.target.offsetWidth;
+                if (offsetX - offsetLeft < offsetWidth / 2) {
+                    console.log('Left');
+                } else {
+                    console.log('Right');
+                }
+                debugger;
+            });
             span.appendChild(node);
             return span;
         } else {
@@ -510,7 +528,7 @@ class symbolNode implements CombinableDomNode {
         let styles = "";
 
         if (this.italic > 0) {
-            styles += "margin-right:" + this.italic + "em;";
+            styles += "padding-right:" + this.italic + "em;";
         }
         for (const style in this.style) {
             if (this.style.hasOwnProperty(style)) {
@@ -558,6 +576,8 @@ class svgNode implements VirtualDomNode {
         const svgNS = "http://www.w3.org/2000/svg";
         const node = document.createElementNS(svgNS, "svg");
 
+        node.style.pointerEvents = 'none';
+
         // Apply attributes
         for (const attr in this.attributes) {
             if (Object.prototype.hasOwnProperty.call(this.attributes, attr)) {
@@ -568,6 +588,7 @@ class svgNode implements VirtualDomNode {
         for (let i = 0; i < this.children.length; i++) {
             node.appendChild(this.children[i].toNode());
         }
+
         return node;
     }
 

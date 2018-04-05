@@ -69,9 +69,9 @@
     "clean-install": "npm run clean && npm i",
     "prestart": "node check-node-version.js && check-dependencies && cd src && node unicodeMake.js >unicodeSymbols.js",
     "start": "webpack-dev-server --hot --config webpack.dev.js",
-    "build": "npm run prestart && rimraf build/* && webpack",
+    "build": "rimraf build/* && webpack",
     "watch": "npm run build -- --watch",
-    "dist": "npm test && npm run build && npm run dist:copy && npm run dist:zip && npm run dist:dist",
+    "dist": "npm run build && npm run dist:copy && npm run dist:zip && npm run dist:dist",
     "dist:copy": "cd build && mkdirp katex && cp -r katex.js katex.min.js katex.css katex.min.css contrib fonts ../README.md katex",
     "dist:zip": "cd build && tar czf katex.tar.gz katex/ && zip -rq katex.zip katex/",
     "dist:dist": "rimraf dist/ && cp -r build/katex/ dist/"

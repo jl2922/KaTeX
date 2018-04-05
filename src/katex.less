@@ -29,6 +29,10 @@
     // mode, while still allowing background/foreground setting on root .katex
     * { -ms-high-contrast-adjust: none !important; }
 
+    span {
+        pointer-events: none;
+    }
+
     .katex-html {
         // Making .katex inline-block allows line breaks before and after,
         // which is undesireable ("to $x$,"). Instead, adjust the .katex-html

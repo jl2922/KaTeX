@@ -71,6 +71,7 @@ export const buildExpression = function(expression, options, isRealGroup,
             rawGroups.push(output);
         }
     }
+    console.log(rawGroups);
     // At this point `rawGroups` consists entirely of `symbolNode`s and `span`s.
 
     // Ignore explicit spaces (e.g., \;, \,) when determining what implicit
@@ -662,7 +663,9 @@ export default function buildHTML(tree, options) {
 
     // Build the expression contained in the tree
     const expression = buildExpression(tree, options, true);
+    console.log(expression);
     const body = makeSpan(["base"], expression, options);
+    console.log(body);
 
     // Add struts, which ensure that the top of the HTML element falls at the
     // height of the expression, and the bottom of the HTML element falls at the
@@ -679,6 +682,7 @@ export default function buildHTML(tree, options) {
 
     // Wrap the struts and body together
     const htmlNode = makeSpan(["katex-html"], [topStrut, bottomStrut, body]);
+    console.log(htmlNode);
 
     htmlNode.setAttribute("aria-hidden", "true");
 
