@@ -323,6 +323,8 @@ const makeSpan = function(
     options?: Options,
     style?: CssStyle,
 ): domTree.span {
+    console.log(children);
+    debugger;
     const span = new domTree.span(classes, children, options, style);
 
     sizeElementFromChildren(span);

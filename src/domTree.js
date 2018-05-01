@@ -483,6 +483,7 @@ class symbolNode implements CombinableDomNode {
         }
 
         if (span) {
+            console.log(this);
             console.log(span);
             span.style.cursor = 'text';
             span.style.pointerEvents = 'auto';
@@ -490,14 +491,13 @@ class symbolNode implements CombinableDomNode {
             span.style.zIndex = '1000';
             span.addEventListener('mousedown', (event) => {
                 console.log(event);
-                alert('symbolNode');
                 const offsetX = event.offsetX;
                 const offsetLeft = event.target.offsetLeft;
                 const offsetWidth = event.target.offsetWidth;
                 if (offsetX - offsetLeft < offsetWidth / 2) {
-                    console.log('Left');
+                    console.log(`Left: ${this.loc.start}`);
                 } else {
-                    console.log('Right');
+                    console.log(`End: ${this.loc.end}`);
                 }
                 debugger;
             });

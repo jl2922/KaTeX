@@ -631,6 +631,10 @@ export const buildGroup = function(group, options, baseOptions) {
     if (groupTypes[group.type]) {
         // Call the groupTypes function
         let groupNode = groupTypes[group.type](group, options);
+        console.log(group);
+        console.log(groupNode);
+        groupNode.loc = group.loc;
+        // debugger;
 
         // If the size changed between the parent and the current group, account
         // for that size difference.
@@ -662,10 +666,13 @@ export default function buildHTML(tree, options) {
     tree = JSON.parse(JSON.stringify(tree));
 
     // Build the expression contained in the tree
+    console.log('build HTML -----');
+    console.log(tree);
     const expression = buildExpression(tree, options, true);
     console.log(expression);
     const body = makeSpan(["base"], expression, options);
     console.log(body);
+    debugger;
 
     // Add struts, which ensure that the top of the HTML element falls at the
     // height of the expression, and the bottom of the HTML element falls at the
